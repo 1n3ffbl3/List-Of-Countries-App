@@ -8,10 +8,10 @@ const layoutStyle = {
 };
 
 
-const Layout = props => (
+const Layout = ({ children }) => (
   <div style={layoutStyle}>
     <Header />
-    {props.children}
+    {children}
   </div>
 );
 

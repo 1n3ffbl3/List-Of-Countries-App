@@ -20,9 +20,8 @@ const TableHead = () => (
   </thead>
 );
 
-
-const Table = props => {
-  if (!props.countries || props.countries.length === 0) {
+const Table = ({ countries, onRowClicked }) => {
+  if (!countries || countries.length === 0) {
     return (
       <table>
         <TableHead/>
@@ -39,8 +38,8 @@ const Table = props => {
     <table>
       <TableHead/>
       <tbody>
-        {props.countries.map((country, idx) => (
-          <tr>
+        {countries.map((country, idx) => (
+          <tr key={idx} onClick={() => onRowClicked(country)}>
             <td>{country.name}</td>
             <td>{country.capital}</td>
             <td>{country.alpha2Code}</td>

@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import Layout from '../components/Layout';
 import Table from '../components/Table';
+import Modal from '../components/Modal';
 
 const initialPageNumber = 1;
 
@@ -13,6 +14,9 @@ const getPage = (data, pageNumber, recordsPerPage) => {
 
 const Index = props => {
   const [pageNumber, setPageNumber] = useState(initialPageNumber);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalData, setModalData] = useState(null);
+
   const recordsPerPage = 20;
   const countries = props.allCountries ? props.allCountries : [];
   const lastPageNumber = Math.ceil((countries.length-1)/recordsPerPage);
@@ -27,12 +31,21 @@ const Index = props => {
     setPageNumber(pageNumber + 1);
   }
 
+  const rowClicked = country => {
+    console.log('rowClicked::country', country);
+    setModalData(country);
+    setModalVisible(true);
+  }
+
   return (
   <Layout>
     <h1>All Countries</h1>
-    <Table countries={pagedCountries} />
+    <Table countries={pagedCountries} onRowClicked={rowClicked}/>
     <button disabled={pageNumber === initialPageNumber} onClick={() => prevPageHandle()}>Previous page</button>
     <button disabled={pageNumber === lastPageNumber} onClick={() => nextPageHandle()}>Next page</button>
+    {modalVisible && (
+      <Modal countryDetails={modalData}/>
+    )}
   </Layout>
 )};
 
