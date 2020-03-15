@@ -9,12 +9,11 @@ const TableHead = () => (
       thead th {
         font-size : 17px;
         font-weight: bold;
-        color: #fcc802;
+        color: #ffffff;
         text-align: left;
         background: #060d44;
         padding: 5px;
         text-transform: uppercase;
-        border-left: none;
       }
     `}
     </style>
@@ -22,37 +21,56 @@ const TableHead = () => (
 );
 
 
-const Table = props => (
-  <table>
-    <TableHead/>
-    <tbody>
-      {props.countries.map(country => (
-        <tr>
-          <td>{country.name}</td>
-          <td>{country.capital}</td>
-          <td>{country.alpha2Code}</td>
-        </tr>
-      ))}
-    </tbody>
-    <style jsx>{`
-      table {
-        font-family: Arial, Helvetica, sans-serif;
-        text-align: left;
-        width: 100%;
-      }
+const Table = props => {
+  if (!props.countries || props.countries.length === 0) {
+    return (
+      <table>
+        <TableHead/>
+        <tbody>
+          <tr>
+            <td>Table is empty</td>
+          </tr>
+        </tbody>
+      </table>
+    )
+  }
 
-      td {
-        padding: 5px;
-      }
+  return(
+    <table>
+      <TableHead/>
+      <tbody>
+        {props.countries.map((country, idx) => (
+          <tr>
+            <td>{country.name}</td>
+            <td>{country.capital}</td>
+            <td>{country.alpha2Code}</td>
+          </tr>
+        ))}
+      </tbody>
+      <style jsx>{`
+        table {
+          font-family: Arial, Helvetica, sans-serif;
+          text-align: left;
+          width: 100%;
+        }
 
-      tr:nth-child(even) {
-        background: #ebf4ef;
-      }
-      
-    `}
-    </style>
-  </table>
-);
+        td {
+          padding: 5px;
+        }
+
+        tr:nth-child(even) {
+          background: #ebf4ef;
+        }
+
+        table, th, td {
+          border: none;
+        }
+        
+      `}
+      </style>
+    </table>
+  );
+}
 
 
 export default Table;
