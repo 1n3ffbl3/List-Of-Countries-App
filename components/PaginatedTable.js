@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 
 import Table from '../components/Table';
 import Modal from '../components/Modal';
+import styles from './PaginatedTable.module.scss';
 
 
 const initialPageNumber = 1;
@@ -9,6 +10,28 @@ const initialPageNumber = 1;
 const getPage = (data, pageNumber, recordsPerPage) => {
   const startIndex = (pageNumber - 1) * recordsPerPage;
   return data.slice(startIndex, startIndex + recordsPerPage);
+}
+
+const createTableOfSize = size => {
+  return Array.from({ length: size }, (_, i) => i+1)
+}
+
+const getPageSelectors = (pageNumber, lastPageNumber) => {
+  const maxPaginators = 3;
+  const hasAtLeastThreePages = lastPageNumber - 3 >= 0
+
+  if (pageNumber === initialPageNumber) {
+    return hasAtLeastThreePages ? 
+      createTableOfSize(lastPageNumber).splice(0, maxPaginators) : 
+      createTableOfSize(lastPageNumber);
+  } else if (pageNumber === lastPageNumber) {
+    return hasAtLeastThreePages ? 
+      createTableOfSize(lastPageNumber).splice(lastPageNumber - maxPaginators, maxPaginators) : 
+      createTableOfSize(lastPageNumber);
+  } else {
+    // Get previous, current and next page numbers
+    return createTableOfSize(lastPageNumber).splice(pageNumber - 2, maxPaginators);
+  }
 }
 
 const PaginatedTable = ({ data, recordsPerPage = 20 }) => {
@@ -38,11 +61,21 @@ const PaginatedTable = ({ data, recordsPerPage = 20 }) => {
     setModalVisible(false);
   }
 
+  const pageSelectors = getPageSelectors(pageNumber, lastPageNumber);
+
   return (
   <Fragment>
     <Table countries={pagedCountries} onRowClicked={rowClicked}/>
-    <button disabled={pageNumber === initialPageNumber} onClick={() => prevPageHandle()}>Previous page</button>
-    <button disabled={pageNumber === lastPageNumber} onClick={() => nextPageHandle()}>Next page</button>
+    <div className={styles.pagination}>
+      <button disabled={pageNumber === initialPageNumber} onClick={() => prevPageHandle()}>&laquo;</button>
+      {
+        pageSelectors.map((activePage) => {
+        return (<button className={(pageNumber === activePage ? styles.active : '')} onClick={() => setPageNumber(activePage)}>{activePage}</button>)
+        })
+      }
+      <button disabled={pageNumber === lastPageNumber} onClick={() => nextPageHandle()}>&raquo;</button>
+    </div>
+    
     {modalVisible && (
       <Modal countryDetails={modalData} closeModal={handleCloseModal}/>
     )}
