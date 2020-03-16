@@ -1,14 +1,14 @@
 import fetch from 'isomorphic-unfetch';
+import { Fragment } from 'react';
 
-import Layout from '../components/Layout';
-import Table from '../components/Table';
+import PaginatedTable from '../components/PaginatedTable';
 
 
-const EuCountries = props => (
-  <Layout>
+const EuCountries = ({ euCountries }) => (
+  <Fragment>
     <h1>EU Countries</h1>
-    <Table countries={props.euCountries}/>
-  </Layout>
+    <PaginatedTable data={euCountries}/>
+  </Fragment>
 );
 
 
