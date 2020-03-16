@@ -1,0 +1,22 @@
+.countryTableHead tr th {
+  font-size : 17px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: left;
+  background: #060d44;
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.countryTable {
+  text-align: left;
+  width: 100%;
+
+  td {
+    padding: 5px;
+  }
+
+  tr:nth-child(even) {
+    background: #ebf4ef;
+  }
+}

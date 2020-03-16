@@ -1,22 +1,13 @@
+import styles from './Table.module.scss';
+
+
 const TableHead = () => (
-  <thead>
+  <thead className={styles.countryTableHead}>
     <tr>
       <th>Country Name</th>
       <th>Capital</th>
       <th>Alpha2Code</th>
     </tr>
-    <style jsx>{`
-      thead th {
-        font-size : 17px;
-        font-weight: bold;
-        color: #ffffff;
-        text-align: left;
-        background: #060d44;
-        padding: 5px;
-        text-transform: uppercase;
-      }
-    `}
-    </style>
   </thead>
 );
 
@@ -35,7 +26,7 @@ const Table = ({ countries, onRowClicked }) => {
   }
 
   return(
-    <table>
+    <table className={styles.countryTable}>
       <TableHead/>
       <tbody>
         {countries.map((country, idx) => (
@@ -46,27 +37,6 @@ const Table = ({ countries, onRowClicked }) => {
           </tr>
         ))}
       </tbody>
-      <style jsx>{`
-        table {
-          font-family: Arial, Helvetica, sans-serif;
-          text-align: left;
-          width: 100%;
-        }
-
-        td {
-          padding: 5px;
-        }
-
-        tr:nth-child(even) {
-          background: #ebf4ef;
-        }
-
-        table, th, td {
-          border: none;
-        }
-        
-      `}
-      </style>
     </table>
   );
 }
