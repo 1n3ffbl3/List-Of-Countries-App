@@ -1,4 +1,4 @@
-const Modal = ({ countryDetails })  => {
+const Modal = ({ countryDetails, closeModal })  => {
   return (
     <div>
       <h2>Additional Info</h2>
@@ -7,9 +7,9 @@ const Modal = ({ countryDetails })  => {
       <p>Alpha2code : {countryDetails.alpha2Code}</p>
       <p>Region : {countryDetails.region} </p>
       <p>Population : {countryDetails.population} </p>
+      <button onClick={closeModal}>x</button>
       <style jsx>{`
         div {
-          overflow-y: scroll;
           padding: 70px 80px 50px;
           top: 40%;
           transform: translateY(-50%);
@@ -24,6 +24,28 @@ const Modal = ({ countryDetails })  => {
           max-height: calc(100vh - 20vh);
           display: flex;
           flex-direction: column;
+        }
+
+        h2 {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 25px;
+          display: centre;
+        }
+
+        p {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 20px;
+        }
+
+        button {
+          position: absolute;
+          right: 25px;
+          top: 25px;
+          opacity: 0.7;
+          background: white;
+          font-weight: 800;
+          border: none;
+          font-size: 20px;
         }
       `}
       </style>

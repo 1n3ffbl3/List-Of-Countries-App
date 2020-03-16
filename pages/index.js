@@ -32,9 +32,12 @@ const Index = props => {
   }
 
   const rowClicked = country => {
-    console.log('rowClicked::country', country);
     setModalData(country);
     setModalVisible(true);
+  }
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
   }
 
   return (
@@ -44,7 +47,7 @@ const Index = props => {
     <button disabled={pageNumber === initialPageNumber} onClick={() => prevPageHandle()}>Previous page</button>
     <button disabled={pageNumber === lastPageNumber} onClick={() => nextPageHandle()}>Next page</button>
     {modalVisible && (
-      <Modal countryDetails={modalData}/>
+      <Modal countryDetails={modalData} closeModal={handleCloseModal}/>
     )}
   </Layout>
 )};
