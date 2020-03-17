@@ -13,9 +13,14 @@ const SearchCountry = () => {
     async function fetchData() {
       const url = countryName ? `https://restcountries.eu/rest/v2/name/${countryName}` : 'https://restcountries.eu/rest/v2/all';
       const res = await fetch(url);
-      const searchedCountries = await res.json();
-      
-      setCountries(searchedCountries);
+      // responseBody contains either countries or object with error code & error message
+      const responseBody = await res.json();
+
+      if (responseBody && responseBody.status) {
+        setCountries([]);
+      } else {
+        setCountries(responseBody); 
+      }
     }
     
     fetchData();
