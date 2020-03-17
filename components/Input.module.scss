@@ -1,0 +1,28 @@
+.inputWrapper {
+  position: relative;
+  margin: 24px 24px 24px 0px;
+}
+
+.inputBar {
+  height: 2px;
+  width: 100%;
+  background: #060d44;
+  transition: 0.1s all;
+}
+
+.label {
+  position: absolute;
+  left: 0;
+  color: #060d44;
+  top: -22px;
+  font-size: 13px;
+}
+
+.input {
+  color: #060d44;
+  font-size: 20px;
+  border: none;
+  line-height: 22px;
+  width: 100%;
+  background: none;
+}

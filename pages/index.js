@@ -6,6 +6,7 @@ import PaginatedTable from '../components/PaginatedTable';
 
 const Index = ({ allCountries }) => (
   <Fragment>
+    <h1>All Countries</h1>
     <PaginatedTable data={allCountries}/>
   </Fragment>
 );

@@ -2,6 +2,7 @@ import fetch from 'isomorphic-unfetch';
 import { Fragment, useEffect, useState } from 'react';
 
 import PaginatedTable from '../components/PaginatedTable';
+import Input from '../components/Input';
 
 
 const SearchCountry = () => {
@@ -26,8 +27,19 @@ const SearchCountry = () => {
 
   return (
     <Fragment>
-      <input onChange={(e) => handleSearchChange(e)} />
+      <div>
+        <Input 
+          label='Search for country'
+          onChange={(e) => handleSearchChange(e)} />
+      </div>
       <PaginatedTable data={countries}/>
+      <style jsx>{`
+        div {
+          display: flex;
+          justify-content: center;
+        }
+      `}
+      </style>
     </Fragment>
   );
 };
