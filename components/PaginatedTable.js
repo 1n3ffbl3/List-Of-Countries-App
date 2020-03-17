@@ -72,9 +72,9 @@ const PaginatedTable = ({ data, recordsPerPage = 20 }) => {
       <div className={styles.pagination}>
         <button disabled={pageNumber === initialPageNumber} onClick={() => prevPageHandle()}>&laquo;</button>
         {
-          pageSelectors.map((activePage) => {
+          pageSelectors.map((activePage, index) => {
             return (
-              <button className={(pageNumber === activePage ? styles.active : '')} onClick={() => setPageNumber(activePage)}>
+              <button className={(pageNumber === activePage ? styles.active : '')} onClick={() => setPageNumber(activePage)} key={index}>
                 {activePage}
               </button>
             )

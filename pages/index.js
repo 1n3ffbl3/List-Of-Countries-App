@@ -2,6 +2,7 @@ import fetch from 'isomorphic-unfetch';
 import { Fragment, useEffect, useState } from 'react';
 
 import PaginatedTable from '../components/PaginatedTable';
+import ToggleCacheBtn from '../components/ToggleCacheBtn';
 import { LocalStorageKeys } from '../utils/enum';
 
 
@@ -37,7 +38,8 @@ const Index = () => {
 
   return (
     <Fragment>
-      <h1>All Countries</h1>
+      <ToggleCacheBtn />
+      <h2>All Countries</h2>
       <PaginatedTable data={countries}/>
     </Fragment>
   );

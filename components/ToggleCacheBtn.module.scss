@@ -1,0 +1,21 @@
+.toggleBtnContainer {
+  display: flex;
+  place-content: right;
+  justify-content: right;
+}
+
+.toggleBtn {
+  border: #3ee026;
+  border-radius: 5px 5px 5px 5px;
+  background: #3ee026;
+  padding: 10px;
+  color: #ffffff;
+
+  &Off {
+    border: red;
+    border-radius: 5px 5px 5px 5px;
+    background: red;
+    padding: 10px;
+    color: #ffffff;
+  }
+}

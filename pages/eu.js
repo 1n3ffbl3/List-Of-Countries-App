@@ -6,7 +6,7 @@ import PaginatedTable from '../components/PaginatedTable';
 
 const EuCountries = ({ euCountries }) => (
   <Fragment>
-    <h1>EU Countries</h1>
+    <h2>EU Countries</h2>
     <PaginatedTable data={euCountries}/>
   </Fragment>
 );

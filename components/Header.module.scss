@@ -1,17 +1,23 @@
-.headerWrapper {
+.menuNavigationWrapper {
   display: flex;
-  flex-direction: column;
-
-  .menu {
-    display: flex;
-    flex-direction: row;
-    place-content: center;
-    justify-content: space-between;
-  }
+  flex-direction: row;
+  justify-content: center;
 }
 
-.linkStyle {
+.navItemContainer {
+  border: none;
+  background-color: #ffffff;
+  font-size: 16px;
+}
+
+.navItem {
   margin-right: 15px;
   text-decoration: none;
   color: black;
+
+  &Active {
+    text-decoration: none;
+    font-weight: bold;
+    color: #060d44;
+  }
 }
