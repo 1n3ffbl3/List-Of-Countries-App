@@ -10,7 +10,7 @@ const Index = () => {
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
-    const isCacheEnabled = localStorage.getItem(LocalStorageKeys.IS_CACHE_ENABLED);
+    const isCacheEnabled = localStorage.getItem(LocalStorageKeys.IS_CACHE_ENABLED) === 'true';
 
     const fetchCountries = async (setCache) => {
       const res = await fetch('https://restcountries.eu/rest/v2/all');

@@ -11,17 +11,17 @@ const ToggleCacheBtn = () => {
 
   useEffect(() => {
     const isCacheEnabled = localStorage.getItem(LocalStorageKeys.IS_CACHE_ENABLED);
-    setIsChecked(isCacheEnabled);
+    setIsChecked(isCacheEnabled === 'true');
   }, []);
 
-  const handleCacheToggle = e => {
+  const handleCacheToggle = () => {
     localStorage.setItem(LocalStorageKeys.IS_CACHE_ENABLED, !isChecked);
     setIsChecked(!isChecked);
   };
 
   return(
     <div className={styles.toggleBtnContainer}>
-      <button className={toggleBtnColor} type="button" onClick={(e) => handleCacheToggle(e)}>
+      <button className={toggleBtnColor} type="button" onClick={handleCacheToggle}>
         {isChecked ? 'Caching on' : 'Caching off'}
       </button>
     </div>

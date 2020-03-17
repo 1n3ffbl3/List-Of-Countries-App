@@ -25,4 +25,8 @@
   line-height: 22px;
   width: 100%;
   background: none;
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
 }

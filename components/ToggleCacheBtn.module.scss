@@ -2,6 +2,13 @@
   display: flex;
   place-content: right;
   justify-content: right;
+
+  @media (max-width: 480px) {
+    display: flex;
+    place-content: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
 }
 
 .toggleBtn {

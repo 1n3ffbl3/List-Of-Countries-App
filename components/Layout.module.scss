@@ -2,4 +2,9 @@
   margin: 20px;
   padding: 20px;
   border: 1px solid #DDD;
+
+  @media (max-width: 480px) {
+    border: unset;
+    margin: 0;
+  }
 }

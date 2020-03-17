@@ -6,11 +6,20 @@
   background: #060d44;
   padding: 5px;
   text-transform: uppercase;
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+    text-align: center;
+  }
 }
 
 .countryTable {
   text-align: left;
   width: 100%;
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 
   tbody tr td {
     width: 33%;

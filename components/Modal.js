@@ -7,23 +7,23 @@ const Modal = ({ countryDetails, closeModal })  => (
     <h2 className={styles.modalHeader}>Additional Information</h2>
     <Input 
       disabled
-      value={countryDetails.name}
+      defaultValue={countryDetails.name}
       label='Country name' />
     <Input 
       disabled
-      value={countryDetails.capital}
+      defaultValue={countryDetails.capital}
       label='Capital' />
     <Input 
       disabled
-      value={countryDetails.alpha2Code}
+      defaultValue={countryDetails.alpha2Code}
       label='Alpha2code' />
     <Input 
       disabled
-      value={countryDetails.region}
+      defaultValue={countryDetails.region}
       label='Region' />
     <Input 
       disabled
-      value={countryDetails.population}
+      defaultValue={countryDetails.population}
       label='Population' />
     <button className={styles.modalButton} onClick={closeModal}>x</button>
   </div>
