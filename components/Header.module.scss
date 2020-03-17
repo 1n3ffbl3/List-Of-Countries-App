@@ -1,4 +1,17 @@
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+    justify-content: space-between;
+  }
+}
+
 .linkStyle {
   margin-right: 15px;
   text-decoration: none;
+  color: black;
 }

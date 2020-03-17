@@ -8,6 +8,9 @@ import styles from './PaginatedTable.module.scss';
 const initialPageNumber = 1;
 
 const getPage = (data, pageNumber, recordsPerPage) => {
+  if (!data || data.length === 0) {
+    return [];
+  }
   const startIndex = (pageNumber - 1) * recordsPerPage;
   return data.slice(startIndex, startIndex + recordsPerPage);
 }
@@ -64,23 +67,28 @@ const PaginatedTable = ({ data, recordsPerPage = 20 }) => {
   const pageSelectors = getPageSelectors(pageNumber, lastPageNumber);
 
   return (
-  <Fragment>
-    <Table countries={pagedCountries} onRowClicked={rowClicked}/>
-    <div className={styles.pagination}>
-      <button disabled={pageNumber === initialPageNumber} onClick={() => prevPageHandle()}>&laquo;</button>
-      {
-        pageSelectors.map((activePage) => {
-        return (<button className={(pageNumber === activePage ? styles.active : '')} onClick={() => setPageNumber(activePage)}>{activePage}</button>)
-        })
-      }
-      <button disabled={pageNumber === lastPageNumber} onClick={() => nextPageHandle()}>&raquo;</button>
-    </div>
-    
-    {modalVisible && (
-      <Modal countryDetails={modalData} closeModal={handleCloseModal}/>
-    )}
-  </Fragment>
-)};
+    <Fragment>
+      <Table countries={pagedCountries} onRowClicked={rowClicked}/>
+      <div className={styles.pagination}>
+        <button disabled={pageNumber === initialPageNumber} onClick={() => prevPageHandle()}>&laquo;</button>
+        {
+          pageSelectors.map((activePage) => {
+            return (
+              <button className={(pageNumber === activePage ? styles.active : '')} onClick={() => setPageNumber(activePage)}>
+                {activePage}
+              </button>
+            )
+          })
+        }
+        <button disabled={pageNumber === lastPageNumber} onClick={() => nextPageHandle()}>&raquo;</button>
+      </div>
+      
+      {modalVisible && (
+        <Modal countryDetails={modalData} closeModal={handleCloseModal}/>
+      )}
+    </Fragment>
+  );
+};
 
 
 export default PaginatedTable;
