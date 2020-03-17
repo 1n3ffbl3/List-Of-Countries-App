@@ -11,7 +11,7 @@ const SearchCountry = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const url = countryName ? `https://restcountries.eu/rest/v2/name/${countryName}` : 'https://restcountries.eu/rest/v2/all';
+      const url = countryName ? `https://restcountries.eu/rest/v2/name/${countryName}?fields=name;capital;alpha2Code;region;population` : 'https://restcountries.eu/rest/v2/all?fields=name;capital;alpha2Code;region;population';
       const res = await fetch(url);
       // responseBody contains either countries or object with error code & error message
       const responseBody = await res.json();

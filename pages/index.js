@@ -13,7 +13,7 @@ const Index = () => {
     const isCacheEnabled = localStorage.getItem(LocalStorageKeys.IS_CACHE_ENABLED) === 'true';
 
     const fetchCountries = async (setCache) => {
-      const res = await fetch('https://restcountries.eu/rest/v2/all');
+      const res = await fetch('https://restcountries.eu/rest/v2/all?fields=name;capital;alpha2Code;region;population');
       const fetchedCountries = await res.json();
 
       if (setCache) {

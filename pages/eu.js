@@ -13,7 +13,7 @@ const EuCountries = ({ euCountries }) => (
 
 
 EuCountries.getInitialProps = async function() {
-  const res = await fetch('https://restcountries.eu/rest/v2/regionalbloc/eu');
+  const res = await fetch('https://restcountries.eu/rest/v2/regionalbloc/eu?fields=name;capital;alpha2Code;region;population');
   const euCountries = await res.json();
 
   return {euCountries};
